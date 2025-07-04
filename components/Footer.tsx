@@ -5,127 +5,123 @@ import { useEffect, useState } from "react";
 
 
 export default function Footer() {
-    const [footerData, setFooterData] = useState(null);
+  const [footerData, setFooterData] = useState(null);
+  //https://payload-back.onrender.com/api/footer
 
-    useEffect(() => {
-      fetch(
-        `${process.env.NEXT_PUBLIC_API_URL || "http://localhost:3000"}/api/footer`
-      )
-        .then((res) => res.json())
-        .then((data) => {
-          if (Array.isArray(data.docs) && data.docs.length > 0) {
-            setFooterData(data.docs[0]);
-          }
-        })
-        .catch((err) => console.error("Failed to fetch footer:", err));
-    }, []);
+  https: useEffect(() => {
+    fetch(`https://payload-back.onrender.com/api/footer`)
+      .then((res) => res.json())
+      .then((data) => {
+        if (Array.isArray(data.docs) && data.docs.length > 0) {
+          setFooterData(data.docs[0]);
+        }
+      })
+      .catch((err) => console.error("Failed to fetch footer:", err));
+  }, []);
 
-    console.log(footerData, 'this is footerdata')
+  console.log(footerData, "this is footerdata");
 
-    if (!footerData) return null;
+  if (!footerData) return null;
 
-    // const { logo, newsletter, companyLinks, legalLinks, socialMedia } =
-    //     footerData;
-    
-    
-    return (
-      <section className="footer">
-        <div className="w-layout-blockcontainer main-container w-container">
-          <div className="w-layout-grid footer-halves">
-            <div className="footer-left">
-              <a href="/" className="brand-link w-inline-block">
-                {/* <!-- <img
+  // const { logo, newsletter, companyLinks, legalLinks, socialMedia } =
+  //     footerData;
+
+  return (
+    <section className="footer">
+      <div className="w-layout-blockcontainer main-container w-container">
+        <div className="w-layout-grid footer-halves">
+          <div className="footer-left">
+            <a href="/" className="brand-link w-inline-block">
+              {/* <!-- <img
                 loading="lazy"
                 src="https://cdn.prod.website-files.com/67337f627413b847e2064cec/673471640e7f0e68423b1592_Terra%20Dark.svg"
                 alt=""
                 className="brand-navbar"
               /> --> */}
-                <p>
-                  <strong>{footerData.logo.text}</strong>
-                </p>
-              </a>
-              <div className="newsletter-form-block w-form">
-                <form
-                  id="email-form"
-                  name="email-form"
-                  data-name="Email Form"
-                  method="get"
-                  className="newsletter-form"
-                  data-wf-page-id="67337f627413b847e2064dc4"
-                  data-wf-element-id="0cd23656-5bb2-adc0-9378-f277e86f1fe2"
-                >
-                  <div className="newsletter-form-top">
-                    <div className="label">{footerData.newsletter.title}</div>
-                    <div className="newsletter-field-master">
+              <p>
+                <strong>{footerData.logo.text}</strong>
+              </p>
+            </a>
+            <div className="newsletter-form-block w-form">
+              <form
+                id="email-form"
+                name="email-form"
+                data-name="Email Form"
+                method="get"
+                className="newsletter-form"
+                data-wf-page-id="67337f627413b847e2064dc4"
+                data-wf-element-id="0cd23656-5bb2-adc0-9378-f277e86f1fe2"
+              >
+                <div className="newsletter-form-top">
+                  <div className="label">{footerData.newsletter.title}</div>
+                  <div className="newsletter-field-master">
+                    <input
+                      className="text-field w-input"
+                      name="Email"
+                      data-name="Email"
+                      placeholder="Email"
+                      type="email"
+                      id="Email"
+                      required
+                    />
+                    <div className="submit-button-wrap">
                       <input
-                        className="text-field w-input"
-                        name="Email"
-                        data-name="Email"
-                        placeholder="Email"
-                        type="email"
-                        id="Email"
-                        required
+                        type="submit"
+                        data-wait="Please wait..."
+                        className="submit-button w-button"
+                        value=""
                       />
-                      <div className="submit-button-wrap">
-                        <input
-                          type="submit"
-                          data-wait="Please wait..."
-                          className="submit-button w-button"
-                          value=""
-                        />
-                        <div className="cta-arrow w-embed">
-                          <svg
-                            width="24"
-                            height="24"
-                            viewBox="0 0 24 24"
-                            fill="currentColor"
-                            xmlns="http://www.w3.org/2000/svg"
-                          >
-                            <path
-                              d="M5 12L18 12"
-                              stroke="currentColor"
-                              stroke-width="2"
-                              stroke-linecap="square"
-                              stroke-linejoin="round"
-                            />
-                            <path
-                              d="M13 6L19 12"
-                              stroke="currentColor"
-                              stroke-width="2"
-                              stroke-linecap="square"
-                              stroke-linejoin="round"
-                            />
-                            <path
-                              d="M13 18L19 12"
-                              stroke="currentColor"
-                              stroke-width="2"
-                              stroke-linecap="square"
-                              stroke-linejoin="round"
-                            />
-                          </svg>
-                        </div>
+                      <div className="cta-arrow w-embed">
+                        <svg
+                          width="24"
+                          height="24"
+                          viewBox="0 0 24 24"
+                          fill="currentColor"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M5 12L18 12"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="square"
+                            stroke-linejoin="round"
+                          />
+                          <path
+                            d="M13 6L19 12"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="square"
+                            stroke-linejoin="round"
+                          />
+                          <path
+                            d="M13 18L19 12"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="square"
+                            stroke-linejoin="round"
+                          />
+                        </svg>
                       </div>
                     </div>
                   </div>
-                  <div className="text-small opacity-50">
-                    {footerData.newsletter.warning}
-                  </div>
-                </form>
-                <div className="success-message-newsletter w-form-done">
-                  <div>Thank you! Your submission has been received!</div>
                 </div>
-                <div className="error-message-2 w-form-fail">
-                  <div>
-                    Oops! Something went wrong while submitting the form.
-                  </div>
+                <div className="text-small opacity-50">
+                  {footerData.newsletter.warning}
                 </div>
+              </form>
+              <div className="success-message-newsletter w-form-done">
+                <div>Thank you! Your submission has been received!</div>
+              </div>
+              <div className="error-message-2 w-form-fail">
+                <div>Oops! Something went wrong while submitting the form.</div>
               </div>
             </div>
-            <div
-              id="w-node-_0cd23656-5bb2-adc0-9378-f277e86f1ff3-c5ff4adf"
-              className="footer-right"
-            >
-              {/* <!-- <div className="footer-column">
+          </div>
+          <div
+            id="w-node-_0cd23656-5bb2-adc0-9378-f277e86f1ff3-c5ff4adf"
+            className="footer-right"
+          >
+            {/* <!-- <div className="footer-column">
               <div className="label opacity-50">MAIN pages</div>
               <div className="footer-links-column">
                 <a href="/homepage/home-a" className="footer-link">Homepage 1</a>
@@ -144,15 +140,15 @@ export default function Footer() {
                 <a href="/template/licenses" className="footer-link">Licenses</a>
               </div>
             </div> --> */}
-              <div className="footer-column">
-                <div className="label opacity-50">Company</div>
-                <div className="footer-links-column">
-                  {footerData.companyLinks.map((com, index) => (
-                    <Link href={com.url} className="footer-link" key={index}>
-                      {com.label}
-                    </Link>
-                  ))}
-                  {/* <a href="" className="footer-link">
+            <div className="footer-column">
+              <div className="label opacity-50">Company</div>
+              <div className="footer-links-column">
+                {footerData.companyLinks.map((com, index) => (
+                  <Link href={com.url} className="footer-link" key={index}>
+                    {com.label}
+                  </Link>
+                ))}
+                {/* <a href="" className="footer-link">
                     Home
                   </a>
                   <a href="" className="footer-link">
@@ -167,40 +163,40 @@ export default function Footer() {
                   <a href="" className="footer-link">
                     Blog
                   </a> */}
-                  {/* <!-- <a href="" className="footer-link">Privacy Policy</a> --> */}
-                </div>
+                {/* <!-- <a href="" className="footer-link">Privacy Policy</a> --> */}
               </div>
-              <div className="footer-column">
-                <div className="label opacity-50">Legal</div>
-                <div className="footer-links-column">
-                  {footerData.legalLinks.map((com, index) => (
-                    <Link href={com.url} className="footer-link" key={index}>
-                      {com.label}
-                    </Link>
-                  ))}
-                  {/* <a href="" className="footer-link">
+            </div>
+            <div className="footer-column">
+              <div className="label opacity-50">Legal</div>
+              <div className="footer-links-column">
+                {footerData.legalLinks.map((com, index) => (
+                  <Link href={com.url} className="footer-link" key={index}>
+                    {com.label}
+                  </Link>
+                ))}
+                {/* <a href="" className="footer-link">
                     Privacy Policy
                   </a>
                   <a href="" className="footer-link">
                     Terms
                   </a> */}
-                </div>
               </div>
             </div>
           </div>
-          <div className="footer-bottom-tile">
-            <div className="footer-bottom-wrap">
-              <div className="footer-last-block">
-                <div className="footer-rights-wrap">
-                  <div className="footer-social-wrap">
-                    {footerData.socialMedia.map((com, index) => (
-                      <Link
-                        href={com.url}
-                        className="social-link w-inline-block"
-                        key={index}
-                      >
-                        <div className="icon-social w-embed">
-                          {/* <svg
+        </div>
+        <div className="footer-bottom-tile">
+          <div className="footer-bottom-wrap">
+            <div className="footer-last-block">
+              <div className="footer-rights-wrap">
+                <div className="footer-social-wrap">
+                  {footerData.socialMedia.map((com, index) => (
+                    <Link
+                      href={com.url}
+                      className="social-link w-inline-block"
+                      key={index}
+                    >
+                      <div className="icon-social w-embed">
+                        {/* <svg
                             width="24"
                             height="24"
                             viewBox="0 0 24 24"
@@ -225,16 +221,11 @@ export default function Footer() {
                               </clipPath>
                             </defs>
                           </svg> */}
-                          <img
-                            width="24"
-                            height="24"
-                            src={com.icon.url}
-                            alt=""
-                          />
-                        </div>
-                      </Link>
-                    ))}
-                    {/* <a
+                        <img width="24" height="24" src={com.icon.url} alt="" />
+                      </div>
+                    </Link>
+                  ))}
+                  {/* <a
                       href="http://facebook.com"
                       target="_blank"
                       className="social-link w-inline-block"
@@ -351,22 +342,22 @@ export default function Footer() {
                         </svg>
                       </div>
                     </a> */}
-                  </div>
-                  <div className="text-small">
-                    © RebarX 2025, All Rights Reserved
-                  </div>
                 </div>
-                {/* <!-- <div className="text-small">
+                <div className="text-small">
+                  © RebarX 2025, All Rights Reserved
+                </div>
+              </div>
+              {/* <!-- <div className="text-small">
                 Designed by
                 <a href="http://arieljedrzejczak.com/" className="text-underline"
                   >Ariel</a
                 >
                 for BYQ.
               </div> --> */}
-              </div>
             </div>
           </div>
-          {/* <!-- <div className="footer-bottom-message">
+        </div>
+        {/* <!-- <div className="footer-bottom-message">
           <p className="text-small opacity-50">
             terra–tory™ is crafted by a registered company in the United States,
             operating under California, USA (Registration No. CA-987654).
@@ -378,7 +369,7 @@ export default function Footer() {
             design and technology integration.
           </p>
         </div> --> */}
-        </div>
-      </section>
-    );
+      </div>
+    </section>
+  );
 }
