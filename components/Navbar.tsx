@@ -288,7 +288,7 @@ const Navbar: React.FC = () => {
           <div className="nav-right">
             <div className="menu-cta-wrap desktop">
               <a
-                href="https://webflow.com/templates/designers/byq-studio"
+                // href="https://webflow.com/templates/designers/byq-studio"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="cta-small w-inline-block"
