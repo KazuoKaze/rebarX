@@ -198,7 +198,7 @@ export default function Contact() {
               className="contact-a-right"
             >
               <img
-                src={contactPage.image.url}
+                src={contactPage.image.cloudinaryUrl}
                 loading="lazy"
                 sizes="(max-width: 479px) 100vw, (max-width: 767px) 92vw, (max-width: 991px) 94vw, 557px"
                 alt=""

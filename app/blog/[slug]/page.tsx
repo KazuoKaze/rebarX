@@ -303,11 +303,11 @@ const LexicalContentRenderer = ({ content, className = "" }) => {
         );
 
       case "upload":
-        if (node.value?.url) {
+        if (node.value?.cloudinaryUrl) {
           return (
             <div key={index} className="mb-8">
               <img
-                src={node.value.url}
+                src={node.value.cloudinaryUrl}
                 alt={node.value.alt || ""}
                 className="w-full h-auto rounded-lg"
               />
@@ -413,10 +413,10 @@ const RelatedBlogCard = ({ blog }) => {
 
   return (
     <a href={`/blog/${blog.slug}`} className="article-tile w-inline-block">
-      {blog.mainImage?.url && (
+      {blog.mainImage?.cloudinaryUrl && (
         <div className="image-wrap-blog">
           <img
-            src={blog.mainImage.url}
+            src={blog.mainImage.cloudinaryUrl}
             loading="lazy"
             alt={blog.mainImage.alt || blog.title}
             sizes="(max-width: 479px) 100vw, (max-width: 767px) 44vw, (max-width: 991px) 46vw, 30vw"
@@ -456,8 +456,10 @@ const BlogPost = () => {
 
         const slug = decodeURIComponent(params.slug);
         const response = await fetch(
-          `${process.env.NEXT_PUBLIC_API_URL || "http://localhost:3000"}/api/blog-posts?where[slug][equals]=${slug}&depth=2`
+          `https://payload-back.onrender.com/api/blog-posts?where[slug][equals]=${slug}&depth=2`
         );
+
+        // https://payload-back.onrender.com/api/blog-posts?where[slug][equals]=${slug}&depth=2
 
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
@@ -580,9 +582,9 @@ const BlogPost = () => {
                 </div>
               </a>
             </div>
-            {blogData.mainImage?.url && (
+            {blogData.mainImage?.cloudinaryUrl && (
               <img
-                src={blogData.mainImage.url}
+                src={blogData.mainImage.cloudinaryUrl}
                 loading="lazy"
                 alt={blogData.mainImage.alt || blogData.title}
                 sizes="(max-width: 479px) 100vw, (max-width: 767px) 92vw, 94vw"
@@ -698,7 +700,7 @@ const BlogPost = () => {
                         <img
                           alt={bb.mainImage?.alt || bb.title}
                           loading="lazy"
-                          src={bb.mainImage?.url}
+                          src={bb.mainImage?.cloudinaryUrl}
                           sizes="(max-width: 479px) 100vw, (max-width: 767px) 44vw, (max-width: 991px) 46vw, 30vw"
                           className="image-cover"
                         />

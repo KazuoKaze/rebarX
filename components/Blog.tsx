@@ -17,12 +17,12 @@ export default function Blog({ blogSection }) {
             <Link
               id="w-node-d3fc33a7-4793-5f6e-7bc4-31a4856e0ae8-e2064dc4"
               data-w-id="d3fc33a7-4793-5f6e-7bc4-31a4856e0ae8"
-              href={ `blog/${blo.slug}`}
+              href={`blog/${blo.slug}`}
               className="case-card-home-b long w-inline-block"
             >
               <div className="case-card-image">
                 <img
-                  src={blo.mainImage.url}
+                  src={blo.mainImage.cloudinaryUrl}
                   loading="lazy"
                   sizes="(max-width: 479px) 100vw, (max-width: 767px) 81vw, (max-width: 991px) 85vw, 89vw"
                   alt=""
@@ -52,7 +52,6 @@ export default function Blog({ blogSection }) {
                           </svg>
                         </div>
                       </div>
-                      
                     </div>
                   </div>
                 </div>

@@ -38,7 +38,11 @@ function SS({ gmfr }) {
   if (!gmfr) return;
 
   return (
-    <div className="min-h-screen bg-gray-100" style={{ marginBottom: "130px" }} id='compare'>
+    <div
+      className="min-h-screen bg-gray-100"
+      style={{ marginBottom: "130px" }}
+      id="compare"
+    >
       <section className="section hero-pricing">
         <div className="w-layout-blockcontainer main-container w-container">
           <div className="headline-pricing">
@@ -74,7 +78,7 @@ function SS({ gmfr }) {
                                     <div className="plan-title">
                                       {/* <Shield className="icon-plan w-5 h-5" /> */}
                                       <img
-                                        src={gf.logo.url}
+                                        src={gf.logo.cloudinaryUrl}
                                         alt=""
                                         className="icon-plan w-5 h-5"
                                       />
@@ -99,7 +103,7 @@ function SS({ gmfr }) {
                                       >
                                         {/* <Zap className="tick w-4 h-4" /> */}
                                         <img
-                                          src={pr.icon.url}
+                                          src={pr.icon.cloudinaryUrl}
                                           className="tick w-4 h-4"
                                           alt=""
                                         />

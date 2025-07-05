@@ -49,7 +49,7 @@ export default function BlogPage() {
                       <img
                         alt=""
                         loading="lazy"
-                        src={first.mainImage.url}
+                        src={first.mainImage.cloudinaryUrl}
                         sizes="(max-width: 479px) 100vw, (max-width: 767px) 92vw, 54vw"
                         className="image-cover"
                       />
@@ -118,7 +118,7 @@ export default function BlogPage() {
                         <img
                           alt=""
                           loading="lazy"
-                          src={bb.mainImage.url}
+                          src={bb.mainImage.cloudinaryUrl}
                           sizes="(max-width: 479px) 100vw, (max-width: 767px) 44vw, (max-width: 991px) 46vw, 30vw"
                           className="image-cover"
                         />

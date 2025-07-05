@@ -66,7 +66,7 @@ const AboutSection: React.FC = ({ about }) => {
                         </clipPath>
                       </defs>
                     </svg> */}
-                    <img src={at.image?.url} alt="" />
+                    <img src={at.image?.cloudinaryUrl} alt="" />
                   </div>
                   <div className="text-h6">{at.title}</div>
                 </div>
@@ -166,7 +166,7 @@ const AboutSection: React.FC = ({ about }) => {
             <img
               loading="lazy"
               sizes="(max-width: 479px) 100vw, (max-width: 767px) 92vw, (max-width: 991px) 94vw, 95vw"
-              src={about.finalImage?.url}
+              src={about.finalImage?.cloudinaryUrl}
               alt=""
               className="image-cover"
             />

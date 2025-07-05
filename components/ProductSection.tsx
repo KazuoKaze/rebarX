@@ -21,7 +21,7 @@ export default function ProductSection({ productSection }) {
             className="home-b-about-image"
           >
             <img
-              src={productSection.imageOne.url}
+              src={productSection.imageOne.cloudinaryUrl}
               loading="lazy"
               sizes="(max-width: 479px) 100vw, (max-width: 767px) 92vw, (max-width: 991px) 94vw, 95vw"
               alt=""
@@ -30,7 +30,7 @@ export default function ProductSection({ productSection }) {
           </div>
           <div className="home-b-about-image">
             <img
-              src={productSection.imageTwo.url}
+              src={productSection.imageTwo.cloudinaryUrl}
               loading="lazy"
               sizes="(max-width: 479px) 100vw, (max-width: 767px) 92vw, (max-width: 991px) 94vw, 95vw"
               alt=""
@@ -61,7 +61,7 @@ export default function ProductSection({ productSection }) {
                     </clipPath>
                   </defs>
                 </svg> */}
-                <img src={pr.logo.url} alt="" />
+                <img src={pr.logo.cloudinaryUrl} alt="" />
               </div>
               <div className="about-tile-text-wrap">
                 <div className="text-h6">{pr.title}</div>

@@ -107,7 +107,7 @@ export default function Science({ science  }) {
           </div>
           <div className="features-image-home-b">
             <img
-              src={science.mainImage.url}
+              src={science.mainImage.cloudinaryUrl}
               loading="lazy"
               sizes="(max-width: 479px) 100vw, (max-width: 767px) 92vw, (max-width: 991px) 94vw, 95vw"
               alt=""
