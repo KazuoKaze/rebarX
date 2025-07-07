@@ -3,6 +3,7 @@
 
 import AboutSection from "@/components/About";
 import Blog from "@/components/Blog";
+import Calculatorss from "@/components/Cal";
 import Calculators from "@/components/Calculator";
 import CTA from "@/components/CTA_Section";
 import FAQ from "@/components/FAQ";
@@ -93,6 +94,7 @@ export default function Home() {
     // </>
 
     <>
+      
       {pageData.layout.map((block, index) => {
         const elements = [];
 
@@ -124,7 +126,7 @@ export default function Home() {
             elements.push(<Blog key={index} blogSection={block} />);
             break;
           case "science-block":
-            elements.push(<Calculators key={`calculator-${index}`} />);
+            elements.push(<Calculatorss key={`calculator-${index}`} />);
             elements.push(<Science key={index} science={block} />);
             // ✅ Inject Calculator right after science block
 
@@ -142,6 +144,5 @@ export default function Home() {
         return elements;
       })}
     </>
-
   );
 }

@@ -92,11 +92,11 @@ const Navbar: React.FC = () => {
             </div>
 
             <div className="brand-menu-wrap">
-              {navData.logoType === "image" && navData.logoImage?.url ? (
-                <Link href="/" className="brand-link-navbar w-nav-brand">
+              {navData.logoType === "image" && navData.logoImage?.cloudinaryUrl ? (
+                <Link href="/" className="brand-link-navbars w-nav-brand">
                   <img
                     className="brand-navbar"
-                    src={navData.logoImage.url}
+                    src={navData.logoImage.cloudinaryUrl}
                     alt="Logo"
                   />
                 </Link>

@@ -5126,6 +5126,10 @@ figcaption {
   height: 32px;
 }
 
+.brand-link-navbars > img {
+  height: 35px;
+}
+
 .cart-list {
   padding-left: 32px;
   padding-right: 32px;
@@ -10464,6 +10468,12 @@ figcaption {
     height: 24px;
   }
 
+  .brand-link-navbars {
+    height: 35px;
+    margin-top: 2px !important;
+    margin-left: -12px !important;
+  }
+
   .cart-list {
     padding-left: 16px;
     padding-right: 16px;
@@ -11621,4 +11631,8 @@ figcaption {
 
 .marquee-text-wrap:hover .single-text-marquee {
   /* animation-play-state: paused; */
+}
+
+body {
+  background-color: #f6f6f6;
 }

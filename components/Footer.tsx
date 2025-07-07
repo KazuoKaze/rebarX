@@ -32,15 +32,15 @@ export default function Footer() {
         <div className="w-layout-grid footer-halves">
           <div className="footer-left">
             <a href="/" className="brand-link w-inline-block">
-              {/* <!-- <img
+              <img
                 loading="lazy"
-                src="https://cdn.prod.website-files.com/67337f627413b847e2064cec/673471640e7f0e68423b1592_Terra%20Dark.svg"
+                src={footerData.logo.image.cloudinaryUrl}
                 alt=""
                 className="brand-navbar"
-              /> --> */}
-              <p>
+              />
+              {/* <p>
                 <strong>{footerData.logo.text}</strong>
-              </p>
+              </p> */}
             </a>
             <div className="newsletter-form-block w-form">
               <form
