@@ -5196,6 +5196,9 @@ const Calculatorss: React.FC = () => {
     });
   };
 
+  const [emailSubmitted, setEmailSubmitted] = useState(false);
+  const [userEmail, setUserEmail] = useState("");
+
   return (
     <div className="main-container" id="calculator">
       <div className="section-divider"></div>
@@ -5556,6 +5559,7 @@ const Calculatorss: React.FC = () => {
                     flexDirection: "column",
                     gap: "16px",
                     flex: 1,
+                    position: 'relative'
                   }}
                 >
                   {results ? (
@@ -5658,7 +5662,13 @@ const Calculatorss: React.FC = () => {
                       <div className="section-divider plan-divider-2 semi-light-divider-plan"></div>
 
                       {/* Environmental Benefits */}
-                      <div>
+                      <div
+                        style={{
+                          filter: emailSubmitted ? "none" : "blur(8px)",
+                          pointerEvents: emailSubmitted ? "auto" : "none",
+                          transition: "filter 0.3s ease",
+                        }}
+                      >
                         <div
                           className="label text-semi-light"
                           style={{ marginBottom: "12px" }}
@@ -5728,7 +5738,13 @@ const Calculatorss: React.FC = () => {
                       <div className="section-divider plan-divider-2 semi-light-divider-plan"></div>
 
                       {/* Cost Breakdown */}
-                      <div>
+                      <div
+                        style={{
+                          filter: emailSubmitted ? "none" : "blur(8px)",
+                          pointerEvents: emailSubmitted ? "auto" : "none",
+                          transition: "filter 0.3s ease",
+                        }}
+                      >
                         <div
                           className="label text-semi-light"
                           style={{ marginBottom: "12px" }}
@@ -5818,6 +5834,72 @@ const Calculatorss: React.FC = () => {
                       </div>
 
                       <div className="section-divider plan-divider-2 semi-light-divider-plan"></div>
+
+                      {!emailSubmitted && (
+                        <div
+                          style={{
+                            position: "absolute",
+                            top: 0,
+                            left: 0,
+                            right: 0,
+                            bottom: 0,
+                            // background: "rgba(255,255,255,0.8)",
+                            display: "flex",
+                            flexDirection: "column",
+                            justifyContent: "center",
+                            alignItems: "center",
+                            padding: "24px",
+                            zIndex: 10,
+                            textAlign: "center",
+                          }}
+                        >
+                          <div
+                            className="text-body"
+                            style={{ marginBottom: "12px", fontSize: "16px" }}
+                          >
+                            🔒 Enter your email to unlock the full analysis
+                          </div>
+                          <input
+                            type="email"
+                            placeholder="Enter your email"
+                            value={userEmail}
+                            onChange={(e) => setUserEmail(e.target.value)}
+                            style={{
+                              padding: "13px 20px",
+                              borderRadius: "20px",
+                              border: "none",
+                              marginBottom: "12px",
+                              width: "100%",
+                              maxWidth: "300px",
+                              fontSize: "16px",
+                              // backgroundColor: 'transparent',
+                              color: '#000',
+                              outline: 'none'
+                            }}
+                          />
+                          <button
+                            onClick={() => {
+                              if (userEmail.includes("@")) {
+                                setEmailSubmitted(true);
+                                // Optional: Send to server or log
+                              } else {
+                                alert("Please enter a valid email");
+                              }
+                            }}
+                            style={{
+                              padding: "10px 20px",
+                              backgroundColor: "#eaece4",
+                              color: "#000",
+                              border: "none",
+                              borderRadius: "20px",
+                              cursor: "pointer",
+                              fontSize: "16px",
+                            }}
+                          >
+                            Unlock Results
+                          </button>
+                        </div>
+                      )}
 
                       {/* Non-Quantifiable Benefits */}
                       {/* <div>

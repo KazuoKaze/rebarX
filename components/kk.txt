@@ -1,0 +1,350 @@
+{(!isMobile || (isMobile && results)) && (
+              <div
+                className="pricing-cards last"
+                style={{
+                  width: "100%",
+                  minHeight: "600px",
+                  display: "flex",
+                  flexDirection: "column",
+                }}
+              >
+                <div className="plan-header">
+                  <div className="plan-name-wrap">
+                    <div className="plan-title">
+                      {results ? (
+                        <CheckCircle
+                          className="icon-plan"
+                          style={{ color: "var(--accent)" }}
+                        />
+                      ) : (
+                        <BarChart3 className="icon-plan" />
+                      )}
+                      <div className="text-h6">Comprehensive Analysis</div>
+                    </div>
+                    <div className="text-small">
+                      {results
+                        ? "Your 5-year savings and environmental benefits"
+                        : "Results will appear here after calculation"}
+                    </div>
+                  </div>
+                  <div className="section-divider plan-divider semi-light-divider-plan"></div>
+                </div>
+
+                <div
+                  style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    gap: "16px",
+                    flex: 1,
+                  }}
+                >
+                  {results ? (
+                    <>
+                      {/* 5-Year Savings Highlight */}
+                      <div
+                        style={{
+                          backgroundColor: "var(--accent)",
+                          borderRadius: "var(--radius--small)",
+                          padding: "16px",
+                          textAlign: "center",
+                        }}
+                      >
+                        <div
+                          className="text-h6"
+                          style={{ color: "var(--dark)", marginBottom: "4px" }}
+                        >
+                          <strong>Total 5-Year Savings</strong>
+                        </div>
+                        <div
+                          className="text-h4"
+                          style={{ color: "var(--dark)", marginBottom: "4px" }}
+                        >
+                          ₹
+                          {results.summary.totalFiveYearSavings.toLocaleString()}
+                        </div>
+                        <div
+                          className="text-small"
+                          style={{ color: "var(--semi-transparent-dark)" }}
+                        >
+                          ROI: {results.summary.roiPercentage.toFixed(1)}% |
+                          Payback:{" "}
+                          {results.summary.paybackPeriodYears.toFixed(1)} years
+                        </div>
+                      </div>
+
+                      {/* Material Analysis */}
+                      <div>
+                        <div
+                          className="label text-semi-light"
+                          style={{ marginBottom: "12px" }}
+                        >
+                          Material Analysis
+                        </div>
+                        <div
+                          style={{
+                            display: "flex",
+                            flexDirection: "column",
+                            gap: "8px",
+                          }}
+                        >
+                          <div className="check-wrap">
+                            <div className="check-icon-wrap">
+                              <Activity size={14} />
+                            </div>
+                            <div className="text-body">
+                              <strong>Total TMT Required:</strong>{" "}
+                              {results.materialCalculations.totalTmtRebarKg.toLocaleString()}{" "}
+                              kg
+                            </div>
+                          </div>
+                          <div className="check-wrap">
+                            <div className="check-icon-wrap">
+                              <Wrench size={14} />
+                            </div>
+                            <div className="text-body">
+                              <strong>GFRP Replacement:</strong>{" "}
+                              {results.materialCalculations.gfrpRebarKg.toLocaleString()}{" "}
+                              kg
+                            </div>
+                          </div>
+                          <div className="check-wrap">
+                            <div
+                              className="check-icon-wrap"
+                              style={{
+                                backgroundColor: "var(--accent)",
+                                color: "var(--dark)",
+                              }}
+                            >
+                              <CheckCircle size={14} />
+                            </div>
+                            <div className="text-body">
+                              <strong>Weight Reduction:</strong>{" "}
+                              <span
+                                style={{
+                                  color: "var(--accent)",
+                                  fontWeight: "bold",
+                                }}
+                              >
+                                {results.materialCalculations.weightReductionPercentage.toFixed(
+                                  1
+                                )}
+                                %
+                              </span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div className="section-divider plan-divider-2 semi-light-divider-plan"></div>
+
+                      {/* Environmental Benefits */}
+                      <div>
+                        <div
+                          className="label text-semi-light"
+                          style={{ marginBottom: "12px" }}
+                        >
+                          Environmental Impact
+                        </div>
+                        <div
+                          style={{
+                            display: "flex",
+                            flexDirection: "column",
+                            gap: "8px",
+                          }}
+                        >
+                          <div className="check-wrap">
+                            <div className="check-icon-wrap">
+                              <Leaf size={14} />
+                            </div>
+                            <div className="text-body">
+                              <strong>CO₂ Reduction:</strong>{" "}
+                              {results.environmentalBenefits.netCo2Savings.toLocaleString(
+                                undefined,
+                                {
+                                  minimumFractionDigits: 1,
+                                  maximumFractionDigits: 1,
+                                }
+                              )}{" "}
+                              kg
+                            </div>
+                          </div>
+                          <div className="check-wrap">
+                            <div className="check-icon-wrap">
+                              <Activity size={14} />
+                            </div>
+                            <div className="text-body">
+                              <strong>Trees Equivalent:</strong>{" "}
+                              {results.environmentalBenefits.treesEquivalent.toLocaleString()}{" "}
+                              trees/year
+                            </div>
+                          </div>
+                          <div className="check-wrap">
+                            <div className="check-icon-wrap">
+                              <Clock size={14} />
+                            </div>
+                            <div className="text-body">
+                              <strong>Lifespan:</strong> GFRP{" "}
+                              {results.environmentalBenefits.gfrpLifespan} vs
+                              TMT {results.environmentalBenefits.tmtLifespan}{" "}
+                              years
+                            </div>
+                          </div>
+                          <div className="check-wrap">
+                            <div className="check-icon-wrap">
+                              <Shield size={14} />
+                            </div>
+                            <div className="text-body">
+                              <strong>Maintenance Reduction:</strong>{" "}
+                              {
+                                results.environmentalBenefits
+                                  .maintenanceFrequencyReduction
+                              }
+                              %
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div className="section-divider plan-divider-2 semi-light-divider-plan"></div>
+
+                      {/* Cost Breakdown */}
+                      <div>
+                        <div
+                          className="label text-semi-light"
+                          style={{ marginBottom: "12px" }}
+                        >
+                          Cost Breakdown
+                        </div>
+                        <div
+                          style={{
+                            display: "flex",
+                            flexDirection: "column",
+                            gap: "8px",
+                          }}
+                        >
+                          <div className="check-wrap">
+                            <div className="check-icon-wrap">
+                              <DollarSign size={14} />
+                            </div>
+                            <div className="text-body">
+                              <strong>Material Cost Difference:</strong> ₹
+                              {results.directSavings.materialCostDifference.toLocaleString()}
+                            </div>
+                          </div>
+                          <div className="check-wrap">
+                            <div className="check-icon-wrap">
+                              <DollarSign size={14} />
+                            </div>
+                            <div className="text-body">
+                              <strong>Transport Cost Savings:</strong> ₹
+                              {results.directSavings.transportSavings.toLocaleString()}
+                            </div>
+                          </div>
+                          <div className="check-wrap">
+                            <div className="check-icon-wrap">
+                              <DollarSign size={14} />
+                            </div>
+                            <div className="text-body">
+                              <strong>Labor Cost Savings:</strong> ₹
+                              {results.directSavings.laborSavings.toLocaleString()}
+                            </div>
+                          </div>
+                          <div className="check-wrap">
+                            <div className="check-icon-wrap">
+                              <DollarSign size={14} />
+                            </div>
+                            <div className="text-body">
+                              <strong>Time Savings:</strong> ₹
+                              {results.directSavings.timeSavings.toLocaleString()}
+                            </div>
+                          </div>
+                          <div className="check-wrap">
+                            <div className="check-icon-wrap">
+                              <DollarSign size={14} />
+                            </div>
+                            <div className="text-body">
+                              <strong>Concrete Cover Savings:</strong> ₹
+                              {results.directSavings.concreteCoverSavings.toLocaleString()}
+                            </div>
+                          </div>
+                          <div className="check-wrap">
+                            <div className="check-icon-wrap">
+                              <TrendingUp size={14} />
+                            </div>
+                            <div className="text-body">
+                              <strong>Total Direct Savings:</strong> ₹
+                              {results.directSavings.totalDirectSavings.toLocaleString()}
+                            </div>
+                          </div>
+                          <div className="check-wrap">
+                            <div className="check-icon-wrap">
+                              <Zap size={14} />
+                            </div>
+                            <div className="text-body">
+                              <strong>Indirect Savings (Annual):</strong> ₹
+                              {results.indirectSavings.totalIndirectSavings.toLocaleString()}
+                            </div>
+                          </div>
+                          <div className="check-wrap">
+                            <div className="check-icon-wrap">
+                              <TrendingUp size={14} />
+                            </div>
+                            <div className="text-body">
+                              <strong>5-Year Material Savings:</strong> ₹
+                              {results.summary.fiveYearMaterialSavings.toLocaleString()}
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div className="section-divider plan-divider-2 semi-light-divider-plan"></div>
+
+                      {/* Non-Quantifiable Benefits */}
+                      {/* <div>
+                        <div
+                          className="label text-semi-light"
+                          style={{ marginBottom: "12px" }}
+                        >
+                          Non-Quantifiable Benefits
+                        </div>
+                        <div
+                          style={{
+                            display: "flex",
+                            flexDirection: "column",
+                            gap: "8px",
+                          }}
+                        >
+                          {results.nonQuantifiableBenefits.map(
+                            (benefit, index) => (
+                              <div className="check-wrap" key={index}>
+                                <div className="check-icon-wrap">
+                                  <Shield size={14} />
+                                </div>
+                                <div className="text-body">{benefit}</div>
+                              </div>
+                            )
+                          )}
+                        </div>
+                      </div> */}
+                    </>
+                  ) : (
+                    <div
+                      style={{
+                        display: "flex",
+                        flexDirection: "column",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        flex: 1,
+                        opacity: 0.6,
+                      }}
+                    >
+                      <BarChart3 size={48} style={{ marginBottom: "16px" }} />
+                      <div className="text-body">
+                        Enter project details and click "Calculate Savings" to
+                        see results
+                      </div>
+                    </div>
+                  )}
+                </div>
+              </div>
+            )}
