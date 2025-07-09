@@ -4844,6 +4844,12 @@ figcaption {
   margin-top: 4.2px;
 }
 
+.brand-navbars {
+  height: 100%;
+
+  /* margin-top: -2px; */
+}
+
 .pw-l-eft {
   grid-column-gap: 24px;
   grid-row-gap: 24px;
@@ -5127,7 +5133,8 @@ figcaption {
 }
 
 .brand-link-navbars > img {
-  height: 35px;
+  height: 20px;
+  margin-top: -2px;
 }
 
 .cart-list {
@@ -10469,9 +10476,9 @@ figcaption {
   }
 
   .brand-link-navbars {
-    height: 35px;
-    margin-top: 2px !important;
-    margin-left: -12px !important;
+    height: 25px;
+    margin-top: -2px !important;
+    margin-left: -5px !important;
   }
 
   .cart-list {

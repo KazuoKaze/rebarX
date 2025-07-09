@@ -95,7 +95,7 @@ const Navbar: React.FC = () => {
               {navData.logoType === "image" && navData.logoImage?.cloudinaryUrl ? (
                 <Link href="/" className="brand-link-navbars w-nav-brand">
                   <img
-                    className="brand-navbar"
+                    className="brand-navbars"
                     src={navData.logoImage.cloudinaryUrl}
                     alt="Logo"
                   />
