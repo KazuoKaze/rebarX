@@ -100,6 +100,7 @@ export default function Home() {
 
         switch (block.blockType) {
           case "hero":
+            // elements.push(<Calculatorss key={`calculator-${index}`} />);
             elements.push(<Hero key={index} hero={block} />);
             break;
           case "marquee":
@@ -123,10 +124,11 @@ export default function Home() {
             elements.push(<VisionSection key={index} visionSection={block} />);
             break;
           case "blogSection":
+            elements.push(<Calculatorss key={`calculator-${index}`} />);
             elements.push(<Blog key={index} blogSection={block} />);
             break;
           case "science-block":
-            elements.push(<Calculatorss key={`calculator-${index}`} />);
+            // elements.push(<Calculatorss key={`calculator-${index}`} />);
             elements.push(<Science key={index} science={block} />);
             // ✅ Inject Calculator right after science block
 

@@ -11643,3 +11643,16 @@ figcaption {
 body {
   /* background-color: #f6f6f6; */
 }
+
+
+.card-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 40px;
+}
+
+@media screen and (min-width: 768px) {
+  .card-grid {
+    grid-template-columns: repeat(2, 1fr); /* 2 cards side by side */
+  }
+}
