@@ -7,6 +7,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
 import { getSEO } from "@/components/getSEO";
+import ContactButton from "@/components/ContactButton";
 
 
 const geistSans = Geist({
@@ -252,6 +253,8 @@ export default async function RootLayout({
         <Navbar />
         {children}
         <Footer />
+
+        <ContactButton />
 
         {/* Custom Scripts Before </body> */}
         {seo?.customBodyEndScripts && (

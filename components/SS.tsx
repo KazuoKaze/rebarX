@@ -114,7 +114,7 @@ function SS({ gmfr }) {
                                       </div>
                                     </div>
                                   ))}
-                                  <div className="check-wrap">
+                                  {/* <div className="check-wrap">
                                     <div className="check-icon-wrap">
                                       <Zap className="tick w-4 h-4" />
                                     </div>
@@ -122,7 +122,7 @@ function SS({ gmfr }) {
                                       <strong>Tensile Strength:</strong> Up to
                                       2x of steel (1000+ MPa)
                                     </div>
-                                  </div>
+                                  </div> */}
                                   {/* <div className="check-wrap">
                                     <div className="check-icon-wrap">
                                       <Check className="tick w-4 h-4" />

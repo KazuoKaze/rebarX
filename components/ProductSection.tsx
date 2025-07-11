@@ -16,7 +16,7 @@ export default function ProductSection({ productSection }) {
           <div className="text-h1">strength</div> */}
         </div>
         <div className="w-layout-grid home-b-about-b-grid">
-          <div
+          {/* <div
             id="w-node-e106a09e-d9b8-b472-a1fe-00f18e4443c8-e2064dc4"
             className="home-b-about-image"
           >
@@ -36,7 +36,7 @@ export default function ProductSection({ productSection }) {
               alt=""
               className="image-cover"
             />
-          </div>
+          </div> */}
         </div>
         <div className="w-layout-grid home-b-about-b-grid second">
           {productSection.products.map((pr, index) => (
