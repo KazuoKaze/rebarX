@@ -399,7 +399,6 @@ const FeatureSlider: React.FC = ({ carousel }) => {
         </div>
 
         <div className="slider-features w-slider">
-
           {/* the working one  */}
           {/* <motion.div
             
@@ -442,7 +441,7 @@ const FeatureSlider: React.FC = ({ carousel }) => {
             {carousel.cards.map((slide, index) => (
               <div key={index} className="slide-feature w-slide">
                 <div
-                  className="feature-card-slide"
+                  className="feature-card-slidess"
                   style={{ backgroundColor: slide.cardBgColor }}
                 >
                   <div className="feature-card-slide-top-tile">

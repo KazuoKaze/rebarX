@@ -4076,6 +4076,7 @@ figcaption {
   line-height: 150%;
 }
 
+
 .text-body.semibold {
   font-weight: 500;
 }
@@ -6426,6 +6427,21 @@ figcaption {
   padding: 40px;
   display: flex;
 }
+
+.feature-card-slidess {
+  border-radius: var(--radius--small);
+  background-color: var(--border-light);
+  -webkit-backdrop-filter: blur(16px);
+  backdrop-filter: blur(16px);
+  flex-flow: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  height: 300px;
+  padding: 40px;
+  display: flex;
+}
+
+
 
 .feature-card-slide-top-tile {
   grid-column-gap: 24px;
@@ -9755,6 +9771,10 @@ figcaption {
     padding: 32px;
   }
 
+  .feature-card-slidess {
+    padding: 32px;
+  }
+
   .product-halves,
   .product-thirds {
     grid-template-columns: 1fr;
@@ -11645,7 +11665,7 @@ body {
 }
 
 
-.card-grid {
+/* .card-grid {
   display: grid;
   grid-template-columns: 1fr;
   gap: 40px;
@@ -11653,6 +11673,27 @@ body {
 
 @media screen and (min-width: 768px) {
   .card-grid {
-    grid-template-columns: repeat(2, 1fr); /* 2 cards side by side */
+    grid-template-columns: repeat(2, 1fr); 
+  }
+} */
+
+
+.card-grid {
+  display: grid;
+  grid-template-columns: 1fr; /* Mobile: 1 column */
+  gap: 40px;
+}
+
+/* Tablet: 2 columns */
+@media screen and (min-width: 768px) {
+  .card-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Laptop/Desktop: 3 columns */
+@media screen and (min-width: 1024px) {
+  .card-grid {
+    grid-template-columns: repeat(3, 1fr);
   }
 }
