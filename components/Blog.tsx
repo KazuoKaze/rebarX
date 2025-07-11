@@ -10,7 +10,7 @@ export default function Blog({ blogSection }) {
           <div className="label">Our blogs</div>
           <div className="limit-640">
             <h2 className="no-margins">{blogSection.sectionTitle}</h2>
-          </div>
+          </div>  
         </div>
         <div className="w-layout-grid case-halves-home-b">
           {blogSection.selectedBlogs.map((blo, index) => (

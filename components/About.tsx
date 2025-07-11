@@ -1,23 +1,21 @@
-
 import React, { useEffect, useState } from "react";
 
 const AboutSection: React.FC = ({ about }) => {
-    // const [aboutData, setAboutData] = useState(null);
-        
-    //       useEffect(() => {
-    //         fetch(
-    //           "https://payload-back.onrender.com/api/pages?where[slug][equals]=home&depth=2"
-    //         )
-    //           .then((res) => res.json())
-    //           .then((data) => setAboutData(data.docs[0]));
-    //       }, []);
-        
-    //       console.log(aboutData, 'this is data')
-        
-    //       if (!aboutData) return ;
-        
-    // const about = aboutData.layout.find((block) => block.blockType === "about");
-    
+  // const [aboutData, setAboutData] = useState(null);
+
+  //       useEffect(() => {
+  //         fetch(
+  //           "https://payload-back.onrender.com/api/pages?where[slug][equals]=home&depth=2"
+  //         )
+  //           .then((res) => res.json())
+  //           .then((data) => setAboutData(data.docs[0]));
+  //       }, []);
+
+  //       console.log(aboutData, 'this is data')
+
+  //       if (!aboutData) return ;
+
+  // const about = aboutData.layout.find((block) => block.blockType === "about");
 
   return (
     <section className="section home-b-features-section" id="about">

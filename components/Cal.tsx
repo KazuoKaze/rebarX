@@ -17,6 +17,8 @@ import {
   Clock,
 } from "lucide-react";
 
+import { Trees } from "lucide-react";
+
 interface CalculatorInputs {
   constructionType: string;
   builtUpArea: number;
@@ -25,6 +27,73 @@ interface CalculatorInputs {
   tmtCost: number;
   gfrpCost: number;
 }
+
+// interface CalculationResults {
+//   materialCalculations: {
+//     totalTmtRebarKg: number;
+//     tmtReplacementKg: number;
+//     gfrpRebarKg: number;
+//     remainingTmtKg: number;
+//     weightReductionPercentage: number;
+//   };
+//   costAnalysis: {
+//     originalTmtCost: number;
+//     newTotalCost: number;
+//     totalTmtCost: number;
+//     totalGfrpCost: number;
+//     tmtLifetimeCost: number;
+//     gfrpLifetimeCost: number;
+//   };
+//   directSavings: {
+//     materialCostDifference: number;
+//     transportSavings: number;
+//     laborSavings: number;
+//     timeSavings: number;
+//     concreteCoverSavings: number;
+//     totalDirectSavings: number;
+//   };
+//   indirectSavings: {
+//     maintenanceSavings: number;
+//     energySavings: number;
+//     totalIndirectSavings: number;
+//     fiveYearMaintenanceSavings: number;
+//     fiveYearIndirectSavings: number;
+//   };
+//   environmentalBenefits: {
+//     tmtCo2Emissions: number;
+//     gfrpCo2Emissions: number;
+//     netCo2Savings: number;
+//     treesEquivalent: number;
+//     gfrpLifespan: number;
+//     tmtLifespan: number;
+//     maintenanceFrequencyReduction: number;
+//   };
+//   summary: {
+//     totalFiveYearSavings: number;
+//     fiveYearMaterialSavings: number;
+//     roiPercentage: number;
+//     paybackPeriodYears: number;
+//     newFiveYear: number;
+//   };
+//   nonQuantifiableBenefits: string[];
+// }
+
+// const constructionTypes = [
+//   { value: "residential", label: "Residential Building" },
+//   { value: "commercial", label: "Commercial Building" },
+//   { value: "industrial", label: "Industrial Structure" },
+//   { value: "civil", label: "Civil Infrastructure" },
+//   { value: "heavy_industrial", label: "Heavy Industrial" },
+// ];
+
+
+
+
+
+
+
+
+
 
 interface CalculationResults {
   materialCalculations: {
@@ -71,6 +140,7 @@ interface CalculationResults {
     fiveYearMaterialSavings: number;
     roiPercentage: number;
     paybackPeriodYears: number;
+    newFiveYear: number;
   };
   nonQuantifiableBenefits: string[];
 }
@@ -83,7 +153,279 @@ const constructionTypes = [
   { value: "heavy_industrial", label: "Heavy Industrial" },
 ];
 
-const Calculatorss: React.FC = () => {
+const Calculatorss: React.FC = ({ calc  }) => {
+  // const [inputs, setInputs] = useState<CalculatorInputs>({
+  //   constructionType: "",
+  //   builtUpArea: 0,
+  //   floorArea: 0,
+  //   replacementPercentage: 100,
+  //   tmtCost: 0,
+  //   gfrpCost: 0,
+  // });
+
+  // const [results, setResults] = useState<CalculationResults | null>(null);
+  // const [isCalculating, setIsCalculating] = useState(false);
+  // const [isMobile, setIsMobile] = useState(false);
+
+  // const isFormValid =
+  //   inputs.constructionType &&
+  //   inputs.builtUpArea > 0 &&
+  //   inputs.tmtCost > 0 &&
+  //   inputs.gfrpCost > 0;
+
+  // useEffect(() => {
+  //   const handleResize = () => {
+  //     setIsMobile(window.innerWidth <= 768);
+  //   };
+  //   handleResize();
+  //   window.addEventListener("resize", handleResize);
+  //   return () => window.removeEventListener("resize", handleResize);
+  // }, []);
+
+  // const gridStyle = {
+  //   display: "grid",
+  //   gridTemplateColumns: isMobile ? "1fr" : "1fr 1fr",
+  //   gridColumnGap: "32px",
+  //   gridRowGap: "32px",
+  //   width: "100%",
+  //   alignItems: "flex-start",
+  // };
+
+  // const handleInputChange = (
+  //   field: keyof CalculatorInputs,
+  //   value: string | number
+  // ) => {
+  //   setInputs((prev) => ({
+  //     ...prev,
+  //     [field]: value,
+  //   }));
+  // };
+
+  // const calculateSavings = async () => {
+  //   if (!isFormValid) {
+  //     alert("Please fill in all required fields with valid values");
+  //     return;
+  //   }
+
+  //   setIsCalculating(true);
+  //   await new Promise((resolve) => setTimeout(resolve, 800));
+
+  //   // Construction type factors (kg per sq ft)
+  //   const constructionFactors: { [key: string]: number } = {
+  //     residential: 4,
+  //     commercial: 5,
+  //     industrial: 6,
+  //     civil: 7,
+  //     heavy_industrial: 8,
+  //   };
+
+  //   // Parse inputs with consistent precision
+  //   const builtUpArea = parseFloat(inputs.builtUpArea.toString()) || 0;
+  //   const replacementPercentage =
+  //     parseFloat(inputs.replacementPercentage.toString()) || 100;
+  //   const tmtCost = parseFloat(inputs.tmtCost.toString()) || 0;
+  //   const gfrpCost = parseFloat(inputs.gfrpCost.toString()) || 0;
+
+  //   // Calculate TMT rebar usage
+  //   const rebarFactor = constructionFactors[inputs.constructionType] || 5;
+  //   const totalTmtRebarKg = builtUpArea * rebarFactor;
+
+  //   // Calculate replacement amounts
+  //   const tmtReplacementKg = totalTmtRebarKg * (replacementPercentage / 100);
+  //   const remainingTmtKg = totalTmtRebarKg - tmtReplacementKg;
+
+  //   // GFRP rebar weight calculation (1/5 of TMT weight * 1.3 factor)
+  //   const gfrpRebarKg = Number(((tmtReplacementKg * 1.3) / 5).toFixed(4));
+
+  //   // Weight reduction calculation
+  //   const weightReductionPercentage =
+  //     tmtReplacementKg > 0
+  //       ? Number(
+  //           (
+  //             ((tmtReplacementKg - gfrpRebarKg) / tmtReplacementKg) *
+  //             100
+  //           ).toFixed(4)
+  //         )
+  //       : 0;
+
+  //   // Cost calculations
+  //   const totalTmtCost = Number((remainingTmtKg * tmtCost).toFixed(4));
+  //   const totalGfrpCost = Number((gfrpRebarKg * gfrpCost).toFixed(4));
+  //   const originalTmtCost = Number((totalTmtRebarKg * tmtCost).toFixed(4));
+  //   const newTotalCost = Number((totalTmtCost + totalGfrpCost).toFixed(4));
+
+  //   // Direct savings calculations
+  //   const materialCostDifference = Number(
+  //     (originalTmtCost - newTotalCost).toFixed(4)
+  //   );
+  //   const transportSavings = Number((materialCostDifference * 0.3).toFixed(4));
+  //   const laborSavings = Number((materialCostDifference * 0.2).toFixed(4));
+  //   const timeSavings = Number((newTotalCost * 0.15).toFixed(4));
+  //   const concreteCoverSavings = Number((newTotalCost * 0.05).toFixed(4));
+  //   const totalDirectSavings = Number(
+  //     (
+  //       materialCostDifference +
+  //       transportSavings +
+  //       laborSavings +
+  //       timeSavings +
+  //       concreteCoverSavings
+  //     ).toFixed(4)
+  //   );
+
+  //   // Indirect savings calculations
+  //   const annualMaintenanceTmt = Number((originalTmtCost * 0.01).toFixed(4));
+  //   const annualMaintenanceGfrp = Number((newTotalCost * 0.007).toFixed(4));
+  //   const annualMaintenanceSavings = Number(
+  //     (annualMaintenanceTmt - annualMaintenanceGfrp).toFixed(4)
+  //   );
+  //   const hvacCostEstimate = Number((originalTmtCost * 0.03).toFixed(4));
+  //   const energySavings = Number((hvacCostEstimate * 0.02).toFixed(4));
+  //   const totalIndirectSavingsAnnual = Number(
+  //     (annualMaintenanceSavings + energySavings).toFixed(4)
+  //   );
+
+  //   // 5-year savings calculations
+  //   const fiveYearPeriod = 5;
+  //   const gfrpLifespan = 100;
+  //   const tmtLifespan = 30;
+  //   const tmtReplacements = Math.floor(fiveYearPeriod / tmtLifespan); // 0 for 5 years
+  //   const tmtFiveYearCost = Number(
+  //     (originalTmtCost * (1 + tmtReplacements)).toFixed(4)
+  //   );
+  //   const gfrpFiveYearCost = Number(newTotalCost.toFixed(4));
+  //   const fiveYearMaterialSavings = Number(
+  //     (tmtFiveYearCost - gfrpFiveYearCost).toFixed(4)
+  //   );
+  //   const fiveYearMaintenanceSavings = Number(
+  //     (annualMaintenanceSavings * fiveYearPeriod).toFixed(4)
+  //   );
+  //   const fiveYearIndirectSavings = Number(
+  //     (totalIndirectSavingsAnnual * fiveYearPeriod).toFixed(4)
+  //   );
+  //   const totalFiveYearSavings = Number(
+  //     (
+  //       fiveYearMaterialSavings +
+  //       fiveYearMaintenanceSavings +
+  //       fiveYearIndirectSavings
+  //     ).toFixed(4)
+  //   );
+
+  //   // Environmental benefits
+  //   const tmtCo2Emissions = Number((tmtReplacementKg * 2.5).toFixed(4));
+  //   const gfrpCo2Emissions = Number((gfrpRebarKg * 1.8).toFixed(4));
+  //   const netCo2Savings = Number(
+  //     (tmtCo2Emissions - gfrpCo2Emissions).toFixed(4)
+  //   );
+  //   const treesEquivalent = Math.round(netCo2Savings / 25);
+
+  //   // ROI and payback calculations for 5 years
+  //   const roiPercentage =
+  //     newTotalCost > 0
+  //       ? Number(((totalFiveYearSavings / newTotalCost) * 100).toFixed(4))
+  //       : 0;
+  //   const paybackPeriod =
+  //     totalIndirectSavingsAnnual > 0
+  //       ? Number((newTotalCost / totalIndirectSavingsAnnual).toFixed(4))
+  //       : 0;
+
+  //   // Non-quantifiable benefits
+  //   const nonQuantifiableBenefits = [
+  //     "Enhanced Structural Integrity - Superior tensile strength and flexibility",
+  //     "Electromagnetic Transparency - No interference with communication systems",
+  //     "Thermal Insulation - Better thermal properties reducing energy costs",
+  //     "Chemical Resistance - Resistance to acids, alkalis, and salts",
+  //     "Non-Magnetic Properties - Suitable for sensitive electronic environments",
+  //     "Reduced Health Risks - No risk of rust-related health issues",
+  //     "Aesthetic Benefits - No rust stains on concrete surfaces",
+  //     "Regulatory Compliance - Easier compliance with environmental regulations",
+  //     "Future-Proofing - Technology alignment with sustainable construction trends",
+  //     "Brand Value Enhancement - Association with green building practices",
+  //   ];
+
+  //   const calculationResults: CalculationResults = {
+  //     materialCalculations: {
+  //       totalTmtRebarKg: Number(totalTmtRebarKg.toFixed(2)),
+  //       tmtReplacementKg: Number(tmtReplacementKg.toFixed(2)),
+  //       gfrpRebarKg: Number(gfrpRebarKg.toFixed(2)),
+  //       remainingTmtKg: Number(remainingTmtKg.toFixed(2)),
+  //       weightReductionPercentage: Number(weightReductionPercentage.toFixed(2)),
+  //     },
+  //     costAnalysis: {
+  //       originalTmtCost: Number(originalTmtCost.toFixed(2)),
+  //       newTotalCost: Number(newTotalCost.toFixed(2)),
+  //       totalTmtCost: Number(totalTmtCost.toFixed(2)),
+  //       totalGfrpCost: Number(totalGfrpCost.toFixed(2)),
+  //       tmtLifetimeCost: Number(
+  //         (
+  //           originalTmtCost *
+  //           (1 + Math.floor(gfrpLifespan / tmtLifespan))
+  //         ).toFixed(2)
+  //       ),
+  //       gfrpLifetimeCost: Number(newTotalCost.toFixed(2)),
+  //     },
+  //     directSavings: {
+  //       materialCostDifference: Number(materialCostDifference.toFixed(2)),
+  //       transportSavings: Number(transportSavings.toFixed(2)),
+  //       laborSavings: Number(laborSavings.toFixed(2)),
+  //       timeSavings: Number(timeSavings.toFixed(2)),
+  //       concreteCoverSavings: Number(concreteCoverSavings.toFixed(2)),
+  //       totalDirectSavings: Number(totalDirectSavings.toFixed(2)),
+  //     },
+  //     indirectSavings: {
+  //       maintenanceSavings: Number(annualMaintenanceSavings.toFixed(2)),
+  //       energySavings: Number(energySavings.toFixed(2)),
+  //       totalIndirectSavings: Number(totalIndirectSavingsAnnual.toFixed(2)),
+  //       fiveYearMaintenanceSavings: Number(
+  //         fiveYearMaintenanceSavings.toFixed(2)
+  //       ),
+  //       fiveYearIndirectSavings: Number(fiveYearIndirectSavings.toFixed(2)),
+  //     },
+  //     environmentalBenefits: {
+  //       tmtCo2Emissions: Number(tmtCo2Emissions.toFixed(2)),
+  //       gfrpCo2Emissions: Number(gfrpCo2Emissions.toFixed(2)),
+  //       netCo2Savings: Number(netCo2Savings.toFixed(2)),
+  //       treesEquivalent,
+  //       gfrpLifespan,
+  //       tmtLifespan,
+  //       maintenanceFrequencyReduction: 70,
+  //     },
+  //     summary: {
+  //       totalFiveYearSavings: Number(totalFiveYearSavings.toFixed(2)),
+  //       fiveYearMaterialSavings: Number(fiveYearMaterialSavings.toFixed(2)),
+  //       roiPercentage: Number(roiPercentage.toFixed(2)),
+  //       paybackPeriodYears: Number(paybackPeriod.toFixed(1)),
+  //       newFiveYear: Number(materialCostDifference + laborSavings),
+  //     },
+  //     nonQuantifiableBenefits,
+  //   };
+
+  //   // const newFiveYear = materialCostDifference + laborSavings;
+
+  //   setResults(calculationResults);
+  //   setIsCalculating(false);
+  // };
+
+  // const clearCalculation = () => {
+  //   setResults(null);
+  //   setInputs({
+  //     constructionType: "",
+  //     builtUpArea: 0,
+  //     floorArea: 0,
+  //     replacementPercentage: 100,
+  //     tmtCost: 0,
+  //     gfrpCost: 0,
+  //   });
+  // };
+
+
+
+
+
+
+
+
+
+
   const [inputs, setInputs] = useState<CalculatorInputs>({
     constructionType: "",
     builtUpArea: 0,
@@ -272,6 +614,8 @@ const Calculatorss: React.FC = () => {
       "Brand Value Enhancement - Association with green building practices",
     ];
 
+    const newFiveYear = materialCostDifference + laborSavings;
+
     const calculationResults: CalculationResults = {
       materialCalculations: {
         totalTmtRebarKg: Number(totalTmtRebarKg.toFixed(2)),
@@ -324,6 +668,10 @@ const Calculatorss: React.FC = () => {
         fiveYearMaterialSavings: Number(fiveYearMaterialSavings.toFixed(2)),
         roiPercentage: Number(roiPercentage.toFixed(2)),
         paybackPeriodYears: Number(paybackPeriod.toFixed(1)),
+        // newFiveYear: Number(newFiveYear.toFixed(2)),
+        newFiveYear: Number(
+          Math.abs(materialCostDifference + laborSavings).toFixed(2)
+        ),
       },
       nonQuantifiableBenefits,
     };
@@ -347,8 +695,6 @@ const Calculatorss: React.FC = () => {
   // const [emailSubmitted, setEmailSubmitted] = useState(false);
   // const [userEmail, setUserEmail] = useState("");
 
-
-
   const [contactPage, setContactPage] = useState(null);
   const [formData, setFormData] = useState({});
   const [submitted, setSubmitted] = useState(false);
@@ -359,7 +705,6 @@ const Calculatorss: React.FC = () => {
   // const [userEmail, setUserEmail] = useState("");
   // const [emailSubmitted, setEmailSubmitted] = useState(false);
   // const [isSubmitting, setIsSubmitting] = useState(false);
-
 
   const [userName, setUserName] = useState("");
   const [userPhone, setUserPhone] = useState("");
@@ -442,7 +787,6 @@ const Calculatorss: React.FC = () => {
   //     setIsSubmitting(false);
   //   }
   // };
-
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -531,13 +875,12 @@ const Calculatorss: React.FC = () => {
       <div className="section">
         {/* Centered Hero Section */}
         <div className="headline-pricing">
-          <div className="text-h2">GFRP Rebar Calculator</div>
+          <div className="text-h2">{calc.title}</div>
           <div
             className="text-body"
             style={{ maxWidth: "600px", textAlign: "center" }}
           >
-            Calculate comprehensive 5-year savings and environmental benefits by
-            switching from TMT to GFRP rebar for your construction project
+            {calc.subheading}
           </div>
         </div>
 
@@ -872,7 +1215,7 @@ const Calculatorss: React.FC = () => {
                     </div>
                     <div className="text-small">
                       {results
-                        ? "Your 5-year savings and environmental benefits"
+                        ? "Your savings and environmental benefits"
                         : "Results will appear here after calculation"}
                     </div>
                   </div>
@@ -903,14 +1246,14 @@ const Calculatorss: React.FC = () => {
                           className="text-h6"
                           style={{ color: "var(--dark)", marginBottom: "4px" }}
                         >
-                          <strong>Total 5-Year Savings</strong>
+                          <strong>Total Savings</strong>
                         </div>
                         <div
                           className="text-h4"
                           style={{ color: "var(--dark)", marginBottom: "4px" }}
                         >
-                          ₹
-                          {results.summary.totalFiveYearSavings.toLocaleString()}
+                          ₹{results.summary.newFiveYear.toLocaleString()}
+                          {/* ₹{results.summary.newFiveYear.toLocaleString()} */}
                         </div>
                         <div
                           className="text-small"
@@ -952,7 +1295,7 @@ const Calculatorss: React.FC = () => {
                               <Wrench size={14} />
                             </div>
                             <div className="text-body">
-                              <strong>GFRP Replacement:</strong>{" "}
+                              <strong>RebarX Used:</strong>{" "}
                               {results.materialCalculations.gfrpRebarKg.toLocaleString()}{" "}
                               kg
                             </div>
@@ -1025,11 +1368,19 @@ const Calculatorss: React.FC = () => {
                             </div>
                           </div>
                           <div className="check-wrap">
-                            <div className="check-icon-wrap">
-                              <Activity size={14} />
+                            <div
+                              className="check-icon-wrap"
+                              style={{ backgroundColor: "green" }}
+                            >
+                              <Trees size={14} />
                             </div>
-                            <div className="text-body">
-                              <strong>Trees Equivalent:</strong>{" "}
+                            <div
+                              className="text-body"
+                              style={{ color: "green" }}
+                            >
+                              <strong style={{ color: "white" }}>
+                                Trees Equivalent:
+                              </strong>{" "}
                               {results.environmentalBenefits.treesEquivalent.toLocaleString()}{" "}
                               trees/year
                             </div>
@@ -1039,7 +1390,7 @@ const Calculatorss: React.FC = () => {
                               <Clock size={14} />
                             </div>
                             <div className="text-body">
-                              <strong>Lifespan:</strong> GFRP{" "}
+                              <strong>Lifespan:</strong> RebarX{" "}
                               {results.environmentalBenefits.gfrpLifespan} vs
                               TMT {results.environmentalBenefits.tmtLifespan}{" "}
                               years
@@ -1093,7 +1444,7 @@ const Calculatorss: React.FC = () => {
                               {results.directSavings.materialCostDifference.toLocaleString()}
                             </div>
                           </div>
-                          <div className="check-wrap">
+                          {/* <div className="check-wrap">
                             <div className="check-icon-wrap">
                               <DollarSign size={14} />
                             </div>
@@ -1101,7 +1452,7 @@ const Calculatorss: React.FC = () => {
                               <strong>Transport Cost Savings:</strong> ₹
                               {results.directSavings.transportSavings.toLocaleString()}
                             </div>
-                          </div>
+                          </div> */}
                           <div className="check-wrap">
                             <div className="check-icon-wrap">
                               <DollarSign size={14} />
@@ -1111,7 +1462,7 @@ const Calculatorss: React.FC = () => {
                               {results.directSavings.laborSavings.toLocaleString()}
                             </div>
                           </div>
-                          <div className="check-wrap">
+                          {/* <div className="check-wrap">
                             <div className="check-icon-wrap">
                               <DollarSign size={14} />
                             </div>
@@ -1128,17 +1479,18 @@ const Calculatorss: React.FC = () => {
                               <strong>Concrete Cover Savings:</strong> ₹
                               {results.directSavings.concreteCoverSavings.toLocaleString()}
                             </div>
-                          </div>
+                          </div> */}
                           <div className="check-wrap">
                             <div className="check-icon-wrap">
                               <TrendingUp size={14} />
                             </div>
                             <div className="text-body">
                               <strong>Total Direct Savings:</strong> ₹
-                              {results.directSavings.totalDirectSavings.toLocaleString()}
+                              {results.summary.newFiveYear.toLocaleString()}
+                              {/* {results.directSavings.totalDirectSavings.toLocaleString()} */}
                             </div>
                           </div>
-                          <div className="check-wrap">
+                          {/* <div className="check-wrap">
                             <div className="check-icon-wrap">
                               <Zap size={14} />
                             </div>
@@ -1146,8 +1498,8 @@ const Calculatorss: React.FC = () => {
                               <strong>Indirect Savings (Annual):</strong> ₹
                               {results.indirectSavings.totalIndirectSavings.toLocaleString()}
                             </div>
-                          </div>
-                          <div className="check-wrap">
+                          </div> */}
+                          {/* <div className="check-wrap">
                             <div className="check-icon-wrap">
                               <TrendingUp size={14} />
                             </div>
@@ -1155,7 +1507,7 @@ const Calculatorss: React.FC = () => {
                               <strong>5-Year Material Savings:</strong> ₹
                               {results.summary.fiveYearMaterialSavings.toLocaleString()}
                             </div>
-                          </div>
+                          </div> */}
                         </div>
                       </div>
 
@@ -1165,7 +1517,7 @@ const Calculatorss: React.FC = () => {
                         <div
                           style={{
                             position: "absolute",
-                            top: 0,
+                            top: '160px',
                             left: 0,
                             right: 0,
                             bottom: 0,

@@ -1,6 +1,7 @@
 "use client";
 
 import { MessageCircle } from "lucide-react";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 
 export default function ContactButton() {
@@ -15,15 +16,21 @@ export default function ContactButton() {
 
   return (
     <>
-      <button
-        onClick={handleContactClick}
-        className="floating-contact-btn"
-              aria-label="Contact Us"
-              style={{outline: 'none', border: 'none'}}
-      >
-        <MessageCircle size={20} />
-        <span className="contact-text">Contact Us</span>
-      </button>
+      <Link href="https://wa.me/+919530013034">
+        <button
+          // onClick={handleContactClick}
+          className="floating-contact-btn"
+          aria-label="Contact Us"
+          style={{
+            outline: "none",
+            border: "none",
+            backgroundColor: "#128C7E",
+          }}
+        >
+          <MessageCircle size={20} />
+          <span className="contact-text">Whatsapp</span>
+        </button>
+      </Link>
 
       <style jsx>{`
         .floating-contact-btn {

@@ -43,7 +43,7 @@ export default function Footer() {
               </p> */}
             </a>
             <div className="newsletter-form-block w-form">
-              <form
+              {/* <form
                 id="email-form"
                 name="email-form"
                 data-name="Email Form"
@@ -108,7 +108,7 @@ export default function Footer() {
                 <div className="text-small opacity-50">
                   {footerData.newsletter.warning}
                 </div>
-              </form>
+              </form> */}
               <div className="success-message-newsletter w-form-done">
                 <div>Thank you! Your submission has been received!</div>
               </div>

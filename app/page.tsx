@@ -56,6 +56,8 @@ export default function Home() {
 
   const gmfr = layout.find((block) => block.blockType === "gfrp-vs-tmt");
 
+  const calc = layout.find((block) => block.blockType === "calculator");
+
   // console.log(about, 'this is about')
 
   return (
@@ -123,8 +125,13 @@ export default function Home() {
           case "vision-section":
             elements.push(<VisionSection key={index} visionSection={block} />);
             break;
+          case "calculator":
+            elements.push(
+              <Calculatorss key={`calculator-${index}`} calc={calc} />
+            );
+            break;
           case "blogSection":
-            elements.push(<Calculatorss key={`calculator-${index}`} />);
+            
             elements.push(<Blog key={index} blogSection={block} />);
             break;
           case "science-block":
